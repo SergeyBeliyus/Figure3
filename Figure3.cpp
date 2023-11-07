@@ -6,25 +6,13 @@
 class Figure {
 protected:
 	std::string name = "Фигура";
-	int a = 0;
-	int b = 0;
-	int c = 0;
-	int d = 0;
-	int A = 0;
-	int B = 0;
-	int C = 0;
-	int D = 0;
 
 	virtual bool check() {
 		return true;
 	}
 
-	int get_sides() {
+	virtual int get_sides() {
 		int sides = 0;
-		(a != 0) ? sides++ : sides = sides;
-		(b != 0) ? sides++ : sides = sides;
-		(c != 0) ? sides++ : sides = sides;
-		(d != 0) ? sides++ : sides = sides;
 		return sides;
 	}
 
@@ -43,6 +31,8 @@ public:
 
 class Triangle : public Figure {
 protected:
+	int a, b, c, A, B, C;
+
 	bool check() override {
 		if ((a == 0 || b == 0 || c == 0) && (A+B+C != 180)) {
 			return false;
@@ -50,6 +40,14 @@ protected:
 		else {
 			return true;
 		}
+	}
+
+	int get_sides() override {
+		int sides = 0;
+		(a != 0) ? sides++ : sides = sides;
+		(b != 0) ? sides++ : sides = sides;
+		(c != 0) ? sides++ : sides = sides;
+		return sides;
 	}
 
 public:
@@ -79,6 +77,8 @@ public:
 
 class Quadrangle : public Figure {
 protected:
+	int a, b, c, d, A, B, C, D;
+
 	bool check() override {
 		if ((a == 0 || b == 0 || c == 0 || d == 0) && (A + B + C + D != 360)) {
 			return false;
@@ -86,6 +86,15 @@ protected:
 		else {
 			return true;
 		}
+	}
+
+	int get_sides() override {
+		int sides = 0;
+		(a != 0) ? sides++ : sides = sides;
+		(b != 0) ? sides++ : sides = sides;
+		(c != 0) ? sides++ : sides = sides;
+		(d != 0) ? sides++ : sides = sides;
+		return sides;
 	}
 public:
 	Quadrangle(int a, int b, int c, int d, int A, int B, int C, int D) : Figure() {
